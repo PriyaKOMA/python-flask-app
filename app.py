@@ -1,9 +1,18 @@
+from random import random
 from flask import Flask
+import math
 
-app = Flask(__name__)
+APPX = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'Web App with Python Flask!'
+@APPX.route('/users')
+def user_names():
+    ul = ["john","alic","lucy","aria","hexa"]
+    return ul[(random() * 100) % len(ul)]
 
-app.run(host='0.0.0.0', port=5001)
+@APPX.route('/apps')
+def app_names():
+    al = ["twitter","facebook","google","instagram","snapchat"]
+    return al[(random() * 100) % len(al)]
+
+if __name__ == '__main__':
+    APPX.run(host='0.0.0.0', port=8081, debug=True)
